@@ -214,6 +214,7 @@ export class VenueEditComponent implements OnInit {
 
   loadVenueForEdit(venue: Venue) {
     console.log('loading venue data: ', venue);
+    console.log(this.form);
     this.form.get('details').patchValue({
       extraServicesText: venue.extraServicesText,
       roomSizeSqaureMeters: venue.roomSizeSqaureMeters,
@@ -297,7 +298,7 @@ export class VenueEditComponent implements OnInit {
     }
 
     if (venue.seatingDetails) {
-      venue.seatingDetails.forEach((i) => {
+      venue.seatingDetails.forEach((i, index) => {
         const found = this.seatingOptions.find((cat) => cat.id === i.seatingOption);
 
         if (found) {
@@ -347,6 +348,7 @@ export class VenueEditComponent implements OnInit {
 
       this.form.markAsPristine();
       this.venue = await this.venueService.getVenue(this.venue.id).toPromise();
+      this.updateSeatingDetails();
       this.alertify.success('Successfully updated');
       this.router.navigate(['/venues/edit/' + this.venue.id]);
     } catch (e) {
@@ -355,6 +357,14 @@ export class VenueEditComponent implements OnInit {
       this.blockUI.stop();
       this.loading = false;
     }
+  }
+
+  updateSeatingDetails() {
+    this.seatingOptions.map((option, index) => {
+      if (this.venue.seatingDetails.find((i) => i.seatingOption !== option.id)) {
+        (this.form.get('details').get('seatingDetails') as FormArray).at(index).get('capacity').setValue(0);
+      }
+    });
   }
 
   validateVenueOnSave(data: VenueEditForm): string {

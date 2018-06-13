@@ -43,7 +43,7 @@ export class VenueEditService {
             return this.fb.group({
               checkbox: false,
               capacity: 0
-            })
+            });
           })
         )
       }),

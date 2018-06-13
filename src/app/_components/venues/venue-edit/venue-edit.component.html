@@ -163,25 +163,36 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="">
-                          Seating Options
-                        </label>
-                        <label for="" style="float: right;margin-right: 20px;">
-                          Capacity
-                        </label>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="">
+                            Seating Options
+                          </label>
+                          </div>
+                          <div class="col-md-6" style="text-align: center">
+                            <label for="">
+                              Capacity
+                            </label>
+                          </div>
+                        </div>
+
+
                         <div>
                           <div class="row">
                             <div class="col-md-12" *ngFor="let seatingOption of seatingOptions; let i = index" formArrayName="seatingDetails">
-                              <div class="row" [formGroupName]="i">
+                              <div class="row" [formGroupName]="i" style="display: flex; align-items: center;">
                                 <div class="col-md-6">
                                   <label class="checkbox-inline" style="margin-left: 0; margin-right: 5px;">
                                     <input [formControlName]="'checkbox'" type="checkbox"> {{seatingOption.name}}
                                   </label>
                                 </div>
-                                <div class="col-md-6">
-                                    <input [formControlName]="'capacity'" type="number" class="form-control">
-                                </div>
 
+                                <div class="col-md-6">
+                                    <input [formControlName]="'capacity'"
+                                           [attr.disabled]="!form.value.details.seatingDetails[i].checkbox ? '' : null"
+                                           type="number"
+                                           class="form-control">
+                                </div>
                               </div>
                             </div>
                           </div>
