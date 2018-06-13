@@ -115,11 +115,14 @@ export class VenueEditService {
   }
 
   convertToValueSeatingOptions(data, store: 'seatingOptions') {
-    return data
-      .filter((elem) => elem.checkbox)
+    const arr = [];
+    data
       .map((elem, i) => {
-        return {capacity: elem.capacity, seatingOption: this[store][i].id};
+        if (elem.checkbox) {
+            arr.push({capacity: elem.capacity, seatingOption: this[store][i].id});
+        }
       });
+    return arr;
   }
 
   get amenetiesList() {
