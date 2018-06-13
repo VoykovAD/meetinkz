@@ -1,11 +1,10 @@
-import { VenueStatusEnum } from '../../../../../../web/src/app/models/Venue';
 import { LanguagesEnum } from '../../../_models/general.interface';
 import {
-  ActivityTime,
-  AmenityItemEnum,
-  PricingDetails, seatingDetails,
-  VenueCategoryEnum,
-  VenueCateringOptions, VenueSeatingOptionEnum
+    ActivityTime,
+    AmenityItemEnum,
+    PricingDetails, seatingDetails,
+    VenueCategoryEnum,
+    VenueCateringOptions, VenueSeatingOptionEnum, VenueStatusEnum
 } from '../../../_models/Venue';
 
 export interface VenueEditForm {
