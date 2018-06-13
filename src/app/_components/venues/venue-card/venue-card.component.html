@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="panel-image">
+      
+      <img src="{{venue.mainPhotoUrl ? venue.mainPhotoUrl : '../../../../assets/placeholder.png'}}" alt="">
+      <ul class="list-inline member-icons animate text-center">
+        <li>
+          <button class="btn btn-primary" [routerLink]="['/venues/edit/', venue.id]" routerLinkActive="router-link-active" >
+            <i class="fa fa-edit"></i>
+          </button>
+        </li>
+      </ul>
+      
+    </div>
+    <div>
+      <div class="label-wrapper text-center" style="margin-bottom: 5px; min-height: 15px;">
+        <span class="label label-danger" *ngIf="venue.status === VenueStatusEnum.Draft">
+          Draft
+        </span>
+        <span class="label label-success" *ngIf="venue.status === VenueStatusEnum.Published">
+          Published
+        </span>
+        <h5>
+          <small>Id: {{venue.id}}</small>
+        </h5>
+      </div>
+    </div>
+    <div class="text-center">
+      <h5>{{venue.name.length > 30 ? venue.name.substr(0,27) + '...' : venue.name}}</h5>
+    </div>
+    <div class="text-center">
+      <h5 *ngIf="venue.city != null">
+        <small>{{venue.city}}, {{venue.countryFullName}}</small>
+      </h5>
+      <h5 *ngIf="venue.city == null">
+        <small>No Location</small>
+      </h5>
+    </div>
+  </div>
+</div>

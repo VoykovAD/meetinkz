@@ -1,0 +1,9 @@
+.ngx-datatable.material.striped .datatable-row-odd {
+    background: powderblue;
+}
+
+.equal {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-end;
+}

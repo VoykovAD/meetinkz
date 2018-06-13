@@ -1,0 +1,73 @@
+.profile-image {
+    margin: 25px;
+    width: 85%;
+    height: 85%;
+}
+
+.panel-body {
+    padding: 0 25px;
+}
+
+.panel-footer {
+    padding: 10px 15px;
+    background-color: #fff;
+    border-top: none;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-group-justified>.btn-group .btn {
+    width: 95%;
+}
+
+agm-map {
+  height: 300px;
+}
+
+.PhotoBox {
+  margin-bottom: 10px;
+  background-size: cover;
+  height: 300px;
+  overflow: hidden;
+  background-position: center;
+}
+
+.PhotoBox .PhotoBox__main-image {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.PhotoBox .PhotoBox__main-image.PhotoBox__main-image--clickable {
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.PhotoBox .PhotoBox__main-image.PhotoBox__main-image--clickable:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.PhotoBox .PhotoBox__main-image {
+  display: flex;
+}
+
+.PhotoBox .PhotoBox__main-image__label {
+  flex: 1;
+}
+
+.PhotoBox .PhotoBox__main-image__remove {
+  background: red;
+  color: white;
+  max-width: 30px;
+  flex: 1;
+}
+
+.PhotoBox .PhotoBox__main-image__remove:hover {
+  cursor: pointer;
+}
+
+.PhotoBox .PhotoBox__main-image__remove i {
+  font-style: normal;
+}

@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-success" [routerLink]="['/venues/edit']">
+        Create Venue <i class="fa fa-plus"></i>
+      </button>
+    </div>
+  </div>
+  <form action="" (submit)="searchTerms()">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-1">
+          <div class="form-group">
+            <label for="">
+              id
+            </label>
+            <input class="form-control" name="id" type="text" [(ngModel)]="venueParams.id">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="">
+              Name
+            </label>
+            <input class="form-control" name="name" type="text" [(ngModel)]="venueParams.name">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="">
+              Status
+            </label>
+            <select name="status" class="form-control" [(ngModel)]="venueParams.status">
+              <option value="" selected>All</option>
+              <option value="1">Draft</option>
+              <option value="2">Published</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="">
+              Language
+            </label>
+            <select name="locale" class="form-control" [(ngModel)]="venueParams.locale">
+              <option value="" selected>All</option>
+              <option value="he-IL">he-IL</option>
+              <option value="en-UK">en-UK</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-primary" style="margin-top: 23px;" (click)="searchTerms()">
+            Search
+          </button>
+
+        </div>
+    </div>
+  </form>
+
+  <div class="text-center" style="min-height: 40px;">
+    <span *ngIf="loading"  style="margin-left: 10px; display: inline-block">
+      Loading...
+    </span>
+  </div>
+  <div class="row equal">
+    <div class="col-md-12 text-center">
+      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <div *ngFor="let venue of venues | paginate: { itemsPerPage: pageLimit, currentPage: currentPage, totalItems: totalItems }" class="col-lg-2 col-md-3 col-sm-6">
+          <app-venue-card [venue]="venue"></app-venue-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

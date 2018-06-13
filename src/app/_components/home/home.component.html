@@ -1,0 +1,11 @@
+<div class="container">
+  <div *ngIf="!this.authService.loggedIn()" style="text-align: center">
+    <h1>Meetinkz Admin Site</h1>
+    <p>Please login to continue.</p>
+  </div>
+
+  <div *ngIf="this.authService.loggedIn()">
+    <h1>You are logged in!</h1>
+    <app-dashboard></app-dashboard>
+  </div>
+</div>
